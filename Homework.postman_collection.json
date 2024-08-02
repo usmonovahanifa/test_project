@@ -29,6 +29,26 @@
 					"response": []
 				},
 				{
+					"name": "get users by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/users/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "post user",
 					"request": {
 						"method": "POST",

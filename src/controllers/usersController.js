@@ -23,6 +23,31 @@ const getUsers = async(req, res) => {
     }
 }
 
+const getUserById = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const users = await fetchData("SELECT * FROM users");
+        const user = users.find(el => el.id == id);
+
+        if(user){
+            res.send({
+                success: true,
+                data: user
+            })
+        } else{
+            res.status(404).send({
+                success: false,
+                message: `Cannot found user with id ${id}`
+            })
+        }
+    } catch (error) {
+        res.status(error.status || 400).send({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
 const createUser = async(req, res) => {
     try {
         const { full_name, age, job } = req.body;
@@ -100,5 +125,6 @@ module.exports = {
     getUsers,
     createUser,
     updateUsers,
-    deleteUsers
+    deleteUsers,
+    getUserById
 }
